@@ -1,0 +1,23 @@
+{
+  "name": "ruletheworld",
+  "version": "1.0.0",
+  "description": "An RTS game based on CesiumJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YonatanKra/ruleTheWorld.git"
+  },
+  "keywords": [
+    "RTS",
+    "javascript"
+  ],
+  "author": "Yonatan Kra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YonatanKra/ruleTheWorld/issues"
+  },
+  "homepage": "https://github.com/YonatanKra/ruleTheWorld#readme"
+}
