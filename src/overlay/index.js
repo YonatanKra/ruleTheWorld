@@ -3,20 +3,20 @@ import {CustomElementsHelper} from "../helpers/customElements";
 // template
 const templateString = `
     <style>
-    .overlay-animation {
+    :host .overlay-animation {
         opacity: 0;
         visibility: hidden;
         -webkit-transition: opacity 0.5s, visibility 0s 0.5s;
         transition: opacity 0.5s, visibility 0s 0.5s;
     }
-    .overlay-animation.open {
+    :host  .overlay-animation.open {
         opacity: 1;
         visibility: visible;
         -webkit-transition: opacity 0.5s;
         transition: opacity 0.5s;
         z-index: 999;
     }
-    .overlay {
+    :host .overlay {
         position: fixed;
         width: 100%;
         height: 100%;
@@ -25,7 +25,7 @@ const templateString = `
         background: rgba(0, 0, 0, 0.62);
     }
     
-    .overlay .overlay-close {
+    :host .overlay .overlay-close {
         width: 26px;
         height: 26px;
         position: absolute;
@@ -40,6 +40,10 @@ const templateString = `
         z-index: 100;
         cursor: pointer;
     }
+    
+    :host .child {
+        padding: var(--overlay-child-padding, "0 5%");
+    }
     </style>
     <div class="overlay overlay-animation">
         <button type="button" class="overlay-close">Close</button>
@@ -47,11 +51,9 @@ const templateString = `
     </div>
       
 `;
+
 const tmpl = CustomElementsHelper.createTemplate(templateString);
 
-/**
- *
- */
 export class Overlay extends HTMLElement {
     constructor() {
         super();

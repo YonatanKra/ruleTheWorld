@@ -11,6 +11,6 @@ html, body, #appWrapper {
     flex: 1;
 }
 
-.child {
-    padding: 25%;
+app-overlay {
+    --overlay-child-padding: 0 25%;
 }
