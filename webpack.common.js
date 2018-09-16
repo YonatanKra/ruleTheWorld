@@ -23,8 +23,6 @@ module.exports = {
     },
     resolve: {
         alias: {
-            // Cesium module name
-            cesium: path.resolve(__dirname, cesiumSource),
             '$': 'jquery',
             'jQuery': 'jquery'
         }
@@ -32,19 +30,13 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Dragon Hunter',
+            favicon: 'favicon.ico',
             meta: {
                 viewport: 'width=device-width, initial-scale=1'
             }
         }),
         // Copy Cesium Assets, Widgets, and Workers to a static directory
         new CopywebpackPlugin([ { from: path.join('src', 'assets'), to: 'assets' } ]),
-        new CopywebpackPlugin([ { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' } ]),
-        new CopywebpackPlugin([ { from: path.join(cesiumSource, 'Assets'), to: 'Assets' } ]),
-        new CopywebpackPlugin([ { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' } ]),
-        new webpack.DefinePlugin({
-            // Define relative base path in cesium for loading assets
-            CESIUM_BASE_URL: JSON.stringify('')
-        })
     ],
     module: {
         rules: [
