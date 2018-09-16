@@ -10,3 +10,7 @@ html, body, #appWrapper {
 #content {
     flex: 1;
 }
+
+.child {
+    padding: 25%;
+}

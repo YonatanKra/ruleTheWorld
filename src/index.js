@@ -21,15 +21,15 @@ wrapper.setAttribute('id', 'appWrapper');
 
 document.body.appendChild(wrapper);
 
-// set the template of our app - TODO::make the nav a custom component?
+// set the template of our app - TODO::make the nav and content a custom component?
 const template = `
     <nav class="navbar sticky-top">
         <a class="navbar-brand" href="#"><img src="assets/images/dhLogo.png"/></a>
     </nav>
-    <app-overlay id="appOverlay"></app-overlay>
     <div id="content" class="container-fluid">
         
     </div>
+    <footer></footer>
 `;
 wrapper.innerHTML = template;
 

@@ -82,6 +82,7 @@ export class Overlay extends HTMLElement {
             return;
         }
         this._wrapper.classList.add('open');
+        this.style.zIndex = Number.MAX_SAFE_INTEGER;
     }
 
     close() {
@@ -89,6 +90,7 @@ export class Overlay extends HTMLElement {
             return;
         }
         this._wrapper.classList.remove('open');
+        this.style.zIndex = "";
     }
 
 
