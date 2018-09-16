@@ -1,19 +1,10 @@
 // import core firebase client (required)
 import firebase from 'firebase/app';
+
 // import Firebase Authentication (optional)
 import 'firebase/auth';
 
-function oAuthLogin(provider) {
-
-}
-
-function oAuthLogout() {
-
-}
-
-function googleLogin() {
-    return oAuthLogin(new firebase.auth.GoogleAuthProvider());
-}
+const GOOGLE_AUTH_PROVIDER = new firebase.auth.GoogleAuthProvider();
 
 export class UserHelper {
     constructor(firebase) {
@@ -37,14 +28,11 @@ export class UserHelper {
     }
 
     googleLogin() {
-        return googleLogin();
+        return this.oAuthLogin(GOOGLE_AUTH_PROVIDER);
+    }
+
+    get currentUser() {
+        return this._firebase.auth().currentUser;
     }
 
 }
-
-
-export const userHelper = {
-    oAuthLogin,
-    oAuthLogout,
-    googleLogin
-};

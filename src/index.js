@@ -1,12 +1,9 @@
-// import core firebase client (required)
-import firebase from 'firebase/app';
-
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './mainMenu/index';
 import './overlay';
-import { UserHelper } from './helpers/user';
+import { fbAuth } from './firebase';
 
 import './app.css';
 
@@ -47,23 +44,12 @@ overlay.datum = mainMenu;
 wrapper.appendChild(overlay);
 
 setTimeout(() => {
-    const currUser = firebase.auth().currentUser;
+    const currUser = fbAuth.currentUser;
     if (!currUser) {
-        userHelper.googleLogin();
+        fbAuth.googleLogin();
     }
     overlay.open();
 }, 2000);
 
-// Initialize Firebase
-const config = {
-    apiKey: "AIzaSyDlhPGook2CjAdgD9BkAvL6NBFcSG0cytw",
-    authDomain: "dragon-hunters.firebaseapp.com",
-    databaseURL: "https://dragon-hunters.firebaseio.com",
-    projectId: "dragon-hunters",
-    storageBucket: "dragon-hunters.appspot.com",
-    messagingSenderId: "150376561569"
-};
-firebase.initializeApp(config);
 
-const userHelper = new UserHelper(firebase);
 
