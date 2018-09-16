@@ -1,0 +1,12 @@
+html, body, #appWrapper {
+    height: 100%;
+}
+
+#appWrapper {
+    background-image: url("./assets/images/b6.jpg");
+    background-size: cover;
+}
+
+#content {
+    flex: 1;
+}

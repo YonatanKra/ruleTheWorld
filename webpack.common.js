@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopywebpackPlugin = require('copy-webpack-plugin');
 
@@ -25,16 +24,20 @@ module.exports = {
     resolve: {
         alias: {
             // Cesium module name
-            cesium: path.resolve(__dirname, cesiumSource)
+            cesium: path.resolve(__dirname, cesiumSource),
+            '$': 'jquery',
+            'jQuery': 'jquery'
         }
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']), // use the clean plugin to delete the dist folder before a build
-        // This plugin creates our index.html that would load the app for us in the browser
         new HtmlWebpackPlugin({
-            title: 'Your Phrase Fireworks!'
+            title: 'Dragon Hunter',
+            meta: {
+                viewport: 'width=device-width, initial-scale=1'
+            }
         }),
         // Copy Cesium Assets, Widgets, and Workers to a static directory
+        new CopywebpackPlugin([ { from: path.join('src', 'assets'), to: 'assets' } ]),
         new CopywebpackPlugin([ { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' } ]),
         new CopywebpackPlugin([ { from: path.join(cesiumSource, 'Assets'), to: 'Assets' } ]),
         new CopywebpackPlugin([ { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' } ]),
