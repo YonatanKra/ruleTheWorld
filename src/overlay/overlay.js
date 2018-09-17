@@ -92,7 +92,7 @@ export class Overlay extends HTMLElement {
             return;
         }
         this._wrapper.classList.remove('open');
-        this.style.zIndex = "";
+        this.style.zIndex = "auto";
     }
 
 

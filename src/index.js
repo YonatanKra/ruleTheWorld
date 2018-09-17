@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './mainMenu/index';
 import { MainMenuModel } from "./models/mainMenuModel";
 
-import './overlay';
+import './overlay/overlay';
 import { fbAuth } from './firebase';
 
 import './app.css';
