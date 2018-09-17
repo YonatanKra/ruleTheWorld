@@ -3,6 +3,11 @@ import './menuItem';
 
 // template
 const templateString = `
+    <style>
+        nav {
+            padding: var(--menu-nav-padding, 5% 5%);
+        }
+    </style>
     <nav>
         <ul class="mainMenu"></ul>
     </nav>
@@ -16,7 +21,7 @@ export class MainMenu extends HTMLElement{
         let shadowRoot = this.attachShadow({mode: 'open'});
         shadowRoot.appendChild(tmpl.content.cloneNode(true));
         this._menuListElement = shadowRoot.querySelector('.mainMenu');
-        this.dataSet = [1,2,3];
+        this.dataSet = {};
     }
 
     connectedCallback() {
@@ -25,6 +30,9 @@ export class MainMenu extends HTMLElement{
 
     set dataSet(datum) {
         this._data = datum;
+        if (!datum.items) {
+            return;
+        }
         MainMenu.handleDataRefresh(this._menuListElement, datum);
     }
 
@@ -33,11 +41,14 @@ export class MainMenu extends HTMLElement{
     }
 
     static handleDataRefresh(listWrapper, data) {
-        data.forEach(datum => MainMenu.addListElement(listWrapper, datum));
+        let defaults = Object.assign({}, data);
+        delete defaults.items;
+        data.items.forEach(datum => MainMenu.addListElement(listWrapper, datum, defaults));
     }
 
-    static addListElement(listWrapper, datum) {
+    static addListElement(listWrapper, datum, defaults) {
         const li = document.createElement('li', {is: 'menu-item'});
+        datum = Object.assign({}, defaults, datum);
         li.datum = datum;
         listWrapper.appendChild(li);
     }

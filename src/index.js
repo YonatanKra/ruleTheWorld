@@ -2,6 +2,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './mainMenu/index';
+import { MainMenuModel } from "./models/mainMenuModel";
+
 import './overlay';
 import { fbAuth } from './firebase';
 
@@ -29,9 +31,7 @@ const template = `
     <nav class="navbar sticky-top">
         <a class="navbar-brand" href="#"><img src="assets/images/dhLogo.png"/></a>
     </nav>
-    <div id="content" class="container-fluid">
-        
-    </div>
+    <div id="content" class="container-fluid"></div>
     <footer></footer>
 `;
 wrapper.innerHTML = template;
@@ -39,6 +39,7 @@ wrapper.innerHTML = template;
 // set the hidden menu
 const overlay = document.createElement('app-overlay');
 const mainMenu = document.createElement('main-menu');
+mainMenu.dataSet = MainMenuModel;
 overlay.datum = mainMenu;
 
 wrapper.appendChild(overlay);
@@ -46,7 +47,13 @@ wrapper.appendChild(overlay);
 setTimeout(() => {
     const currUser = fbAuth.currentUser;
     if (!currUser) {
-        fbAuth.googleLogin();
+        fbAuth.googleLogin()
+            .then(result => {
+                console.log('LOGIN SUCCESS');
+            })
+            .catch(error => {
+                console.log('Please enter your credentials')
+            });
     }
     overlay.open();
 }, 2000);

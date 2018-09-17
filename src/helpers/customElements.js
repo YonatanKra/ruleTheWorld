@@ -9,8 +9,8 @@ export class CustomElementsHelper {
         return tmpl;
     }
 
-    static registerElement(elementName, elementClass) {
-        window.customElements.define(elementName, elementClass);
+    static registerElement(elementName, elementClass, metaData = {}) {
+        window.customElements.define(elementName, elementClass, metaData);
     }
 
 }

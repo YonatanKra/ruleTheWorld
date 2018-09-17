@@ -42,7 +42,7 @@ const templateString = `
     }
     
     :host .child {
-        padding: var(--overlay-child-padding, "0 5%");
+        padding: var(--overlay-child-padding, 0 5%);
     }
     </style>
     <div class="overlay overlay-animation">
