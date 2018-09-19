@@ -28,7 +28,7 @@ describe('Combat', () => {
                 expect(resultWithMoreThanOneCombatant.error).toBeUndefined();
             });
             
-            it('should make sure all events are functions', () => {
+            it('should make sure all config.events are functions', () => {
                 
             });
         });
