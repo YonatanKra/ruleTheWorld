@@ -6,9 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js",
-    "build": "webpack --config webpack.prod.js",
-    "build:watch": "webpack --config webpack.prod.js --watch",
-    "serve": "webpack-dev-server --config webpack.dev.js"
+    "build": "webpack --config webpack/webpack.prod.js",
+    "build:watch": "webpack --config webpack/webpack.prod.js --watch",
+    "serve": "webpack-dev-server --config webpack/webpack.dev.js"
   },
   "repository": {
     "type": "git",

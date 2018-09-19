@@ -1,7 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './mainMenu/index';
+import './mainMenu/mainMenu';
 import { MainMenuModel } from "./models/mainMenuModel";
 
 import './overlay/overlay';
